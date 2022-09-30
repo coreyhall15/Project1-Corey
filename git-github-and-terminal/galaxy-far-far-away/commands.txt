@@ -1,0 +1,10 @@
+Part 1
+
+mkdir death_star
+touch death_star/death_star.txt death_star/princess_leia.txt death_star/storm_trooper.txt
+mkdir tatooine / touch tatooine/luke.txt tatooine/ben_kenobi.txt
+mkdir millenium_falcon / touch han_solo.txt chewbaca.txt
+
+Part 2
+
+mv ben_kenobi.txt obi_wan.txt
