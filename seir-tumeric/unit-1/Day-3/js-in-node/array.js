@@ -2,6 +2,13 @@
 //Arrays
 //-------------------
 
+//1. getLength(arr)    should return length of arr
+//2. getFirst(arr)     should return the first element of arr
+//3. getLast(arr)      should return the last element of arr
+//4. pushElement(arr)  should push an element to arr, and then return arr
+//5. popElement(arr)   should pop an element from arr, and then return arr
+
+
 //declare an array
 const instructionTeam = ["Alex", "Billie", "David", "Kyle", "Max"]
 

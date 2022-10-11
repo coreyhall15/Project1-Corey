@@ -125,9 +125,10 @@ console.log(hasSoup, 'Exercise 10 Results');
 const nums = [100, 5, 23, 15, 21, 72, 9, 45, 66, 7, 81, 90];
 
 // // Complete Exercise 11 below...
-
+for (let counter = 0; counter <= 100; counter +=1){
+  if (counter % 2 !== 0)
+  console.log(counter)
 let odds = nums.filter(n => n%2)
-
 
 console.log('Exercise 11 Result: ', odds);
 
@@ -181,5 +182,16 @@ console.log(num,'Exercise 14 Result:');
 
 // // Complete Exercise 15 below...
 
+const countArray = function(numsArray) {
+  var sum = 1;
+  for(let i = 0; i < Array.length; i++){
+    if (Array.isArray(numsArray[i])) {
+      sum += numsArray[i]
+    }
+  }
+  return sum;
+}
 
-console.log(total,'Exercise 15 Result: ', total);
+console.log(countArray([100, 5, 23, 15, 21, 72, 9, 45, 66, 7, 81, 90]))
+  'Exercise 15 Result: ', total
+}
