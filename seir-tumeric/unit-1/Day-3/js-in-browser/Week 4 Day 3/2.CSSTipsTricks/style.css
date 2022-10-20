@@ -1,0 +1,30 @@
+button:hover {
+    background-color: red;
+    cursor: pointer;
+    color: white;
+}
+
+/* working with images*/
+.image-container{
+    height: 600px;
+    width: 600px;
+   
+}
+
+.random-image {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.textTransform{
+    text-transform: uppercase;
+}
+
+
+.text{
+    width: 200px;
+    background-color: yellow;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

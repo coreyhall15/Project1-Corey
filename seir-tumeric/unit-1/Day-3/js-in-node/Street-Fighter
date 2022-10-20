@@ -1,0 +1,66 @@
+class Fighter {
+
+    constructor(fightersName) {
+      //atributes
+      this.fightersName = fightersName;
+      this.health = Math.floor(Math.random() * 10) + 10;
+      this.strength = Math.floor(Math.random() * 6) + 5; 
+      this.defense =  Math.floor(Math.random() * 6) + 5;
+    }
+    //methods
+    attack(theOther) {
+      // one fighter (attacker) attacks "theOther" fighter (the defense fighter)
+      let damageHealth = this.strength - theOther.defense;
+      let theOtherHealth = theOther.health - damageHealth;
+      let healthLeft = theOther.health - damageHealth;
+  
+      if (theOtherHealth > 0) {
+        console.log(
+          `${this.fightersName} did ${damageHealth} damage to ${theOther.fightersName} who is left with ${healthLeft} health`
+        );
+      } else if (damageHealth <= 0) {
+        console.log(
+          `${this.fightersName} did not do any damage to ${theOther.fightersName}`
+        );
+      } else {
+        console.log(
+          `${this.fightersName} did ${damageHealth} damage to ${theOther.fightersName} who has no health left.`
+        );
+      }
+    }
+  }
+  //create instances
+  // const fighter1 = new Fighter("Manny");
+  // const fighter2 = new Fighter("Carlos");
+  
+  // console.log(fighter1, fighter2);
+  
+  const Ryu = new Fighter("Ryu");
+  const Ken = new Fighter("Ken");
+  
+  const gameLogic = (Ryu, Ken) => {
+    if (
+      Ryu.strength - Ryu.defense <= 0 &&
+      Ken.strength - Ken.defense <= 0
+    ) {
+      console.log(`There is a draw with no winner`);
+      //break;
+    } else if (Ryu.health > 0 && Ken.health > 0) {
+      Ken.attack(Ryu);
+      if (Ryu.health > 0) {
+        Ryu.attack(Ken);
+      } else if (Ryu.health <= 0) {
+        console.log(
+          `${Ryu.name} has no health remaining. ${Ken.name} is the winner!`
+        );
+        //break
+      } else if (Ken.health <= 0) {
+        console.log(
+          `${Ken.name} has no health remaining. ${Ryu.name} is the winner!`
+        );
+        //break
+      }
+    }
+  };
+  
+  console.log(gameLogic(Ryu, Ken));

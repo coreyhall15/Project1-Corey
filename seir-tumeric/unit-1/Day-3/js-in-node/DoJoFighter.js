@@ -1,57 +1,66 @@
-//Random number function
-
-const randomNum = (num) => {
-    return Math.floor(Math.random() * num)
-}
-
-
-//Fighter Class 
-
 class Fighter {
-    constructor(name, health, strength, defense) {
 
-        this.name = name,
-        this.health = health, randomNum(100),
-        this.strength = strength, randomNum(8),
-        this.defense = defense, randomNum(5)
-        }
-
+    constructor(fightersName) {
+      //atributes
+      this.fightersName = fightersName;
+      this.health = Math.floor(Math.random() * 10) + 10;
+      this.strength = Math.floor(Math.random() * 6) + 5; 
+      this.defense =  Math.floor(Math.random() * 6) + 5;
     }
-    attack(fighter);{
-       const move = randomNum(this.moves.length)
-        const damage = randomNum(this.health)
-        fighter.life -= damage
-        console.log(`${this.name} attacked ${fighter.name} who is left with ${this.health}`)
+    //methods
+    attack(theOther) {
+      // one fighter (attacker) attacks "theOther" fighter (the defense fighter)
+      let damageDealth = this.strength - theOther.defense;
+      let theOtherHealth = theOther.health - damageDealth;
+      let healthLeft = theOther.health - damageDealth;
+  
+      if (theOtherHealth > 0) {
+        console.log(
+          `${this.fightersName} did ${damageDealth} damage to ${theOther.fightersName} who is left with ${healthLeft} health`
+        );
+      } else if (damageDealth <= 0) {
+        console.log(
+          `${this.fightersName} did not do any damage to ${theOther.fightersName}`
+        );
+      } else {
+        console.log(
+          `${this.fightersName} did ${damageDealth} damage to ${theOther.fightersName} who has no health left.`
+        );
+      }
     }
-
-
-    //Create fighters
-
-    const Ken = new Fighter('Ken', '95', '6', '3')
-    const Ryu = new Fighter('Ryu', '100', '7', '2')
-     
-    //Toggles
-
-    let gameOver = true
-    let kenRyu = true
-    while(GameOver){
-
-        if (kenRyu){
-            Ken.attack(Ryu)
-
-        } else {
-            Ryu.attack(Ken)
-
-        }
-        kenRyu = ! kenRyu
-
-        if (Ken.life <= 0){
-            console.log ('Ken is Dead. Ryu wins!')
-            gameOver = false
-        }
-
-        if (Ryu.life <= 0){
-            console.log ('Ryu is Dead. Ken wins!')
-            gameOver = false
-        }
+  }
+  //create instances
+  // const fighter1 = new Fighter("Manny");
+  // const fighter2 = new Fighter("Carlos");
+  
+  // console.log(fighter1, fighter2);
+  
+  const Manny = new Fighter("Manny");
+  const Carlos = new Fighter("Carlos");
+  
+  const gameLogic = (Manny, Carlos) => {
+    if (
+      Carlos.strength - Manny.defense <= 0 &&
+      Manny.strength - Carlos.defense <= 0
+    ) {
+      console.log(`There is a draw with no winner`);
+      //break;
+    } else if (Carlos.health > 0 && Manny.health > 0) {
+      Carlos.attack(Manny);
+      if (Manny.health > 0) {
+        Manny.attack(Carlos);
+      } else if (Manny.health <= 0) {
+        console.log(
+          `${Manny.name} has no health remaining. ${Carlos.name} is the winner!`
+        );
+        //break
+      } else if (Carlos.health <= 0) {
+        console.log(
+          `${Carlos.name} has no health remaining. ${Manny.name} is the winner!`
+        );
+        //break
+      }
     }
+  };
+  
+  console.log(gameLogic(Manny, Carlos));
